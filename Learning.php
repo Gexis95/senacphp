@@ -48,6 +48,16 @@ PHP
             echo "<br> Olá, $nome";
         }
         saudacao("julio");
+
+        //lista
+        $cores = array("vermelho ","amarelo ", "azul");
+        echo "<br> sem for: $cores[0]";
+        echo "<br> sem for: $cores[1]";
+        echo "<br> sem for: $cores[2]";
+
+        for($n = 0; $n < count($cores); $n++){
+            echo "<br> com for: $cores[$n]";
+        }
         
     ?>
     <!-- Terminando PHP -->
