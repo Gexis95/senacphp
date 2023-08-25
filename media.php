@@ -51,7 +51,7 @@
         );
 
         foreach($alunos as $aluno => $media){
-            if($meida >= 6){
+            if($media >= 6){
                 echo "<br>$aluno foi aprovado";
             }else{
                 echo "<br> $aluno foi reprovado";
