@@ -54,7 +54,7 @@
             if($media >= 6){
                 echo "<br>$aluno foi aprovado";
             }else{
-                echo "<br> $aluno foi reprovado";
+                echo "<br> $aluno foi reprovado";   
             }
         }
     ?>
