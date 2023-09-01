@@ -18,7 +18,16 @@
         <div class="conteudo"> 
             <h2>Postagem efetuada com Sucesso!</h2>
             <?php
-                $usuario = "Felipe Geraldino"
+                $usuario = "Felipe Geraldino";
+                
+                //verifica se a requisição foi feita usando POST
+                if($_SERVER ["REQUEST_METHOD"] == "POST"){
+
+                    //obtém o conteúdo da postagem no campo "postagem"
+                    $postagem = $_POST["postagem"];
+                    echo "$usuario, seu post foi: $postagem";
+
+                }
             ?>
         </div>
 
