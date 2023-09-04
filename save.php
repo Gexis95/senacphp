@@ -16,10 +16,10 @@
         </div>
 
         <div class="conteudo"> 
-            <h2>Postagem efetuada com Sucesso!</h2>
+            <H2>Postagem efetuada com Sucesso!</H2>
             <?php
 
-                $usuario = "Felipe Geraldino";
+                $usuario = "funciona pf";
 
                 //criação do cookie para o nome
                 //nome do cookie + valor + dataExpiração + onde pode ser acessado (/) = todo o site
@@ -49,7 +49,7 @@
         <div class="rodape"> 
             <a href="index.html" class="botao">Faça outro aqui!</a>
             <a href="usuario.html" class="botao">Cadastrar Usuário</a>
-            <a href="busca.html" class="botao">Buscar</a>  
+            <a href="list.php" class="botao">Lista de Posts</a>     
         </div>
 
     </div>

@@ -11,12 +11,24 @@
     <div class="painel">
 
         <div class="cabecalho">
-            <img width="80px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Senac_logo.svg/2560px-Senac_logo.svg.png" alt="">
-            <h3>Connect</h3> <br>
             <h1> Lista de Posts</h1>    
         </div>
     
         <div class="conteudo">
+
+            <?php 
+                $usuario = $_COOKIE["nome"];
+                echo "ALOU $usuario!";
+
+                session_start();
+                
+                foreach($_SESSION["postagens"]as $postagem){
+                    echo '<div class="card">';
+                    echo "<strong> $usuario: </strong>";
+                    echo "$postagem";
+                    echo '</div>';
+                }
+            ?>
 
         </div>
 
