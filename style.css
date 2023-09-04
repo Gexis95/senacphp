@@ -21,6 +21,13 @@ h1{
     font-weight: bolder;
 }
 
+h2{
+    margin: 0;
+    font-size: 40px;
+    color: #005594;
+    font-weight: bolder;
+}
+
 textarea{
     padding: 10px;
     border: 1px solid black;
