@@ -11,14 +11,16 @@
     <div class="painel">
 
         <div class="cabecalho">
-            <h1> Lista de Posts</h1>    
+            <h1> Lista de Posts</h1>
+            <a href="index.html" class="botao">Faça um post aqui!</a>
+            <a href="busca.html" class="botao">Buscar</a>
+            <a href="cadastro.html" class="botao">Cadastrar Usuário</a>  
         </div>
     
         <div class="conteudo">
 
             <?php 
                 $usuario = $_COOKIE["nome"];
-                echo "ALOU $usuario!";
 
                 session_start();
                 
@@ -33,9 +35,6 @@
         </div>
 
         <div class="rodape">
-            <a href="index.html" class="botao">Faça outro aqui!</a>
-            <a href="usuario.html" class="botao">Cadastrar Usuário</a>
-            <a href="busca.html" class="botao">Buscar</a>   
         </div>
 
     </div>

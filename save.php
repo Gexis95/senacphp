@@ -19,11 +19,12 @@
             <H2>Postagem efetuada com Sucesso!</H2>
             <?php
 
-                $usuario = "funciona pf";
+                //$usuario = "Januário";
 
                 //criação do cookie para o nome
                 //nome do cookie + valor + dataExpiração + onde pode ser acessado (/) = todo o site
-                setcookie("nome", $usuario, time() + 86400 * 30, "/");
+                //setcookie("nome", $nome, time() + 86400 * 30, "/");
+                $usuario = $_COOKIE["nome"];
                 
                 //verifica se a requisição foi feita usando POST
                 if($_SERVER ["REQUEST_METHOD"] == "POST"){
@@ -36,7 +37,7 @@
                     session_start();
 
                     //se a lista de postagens não(!) existe(isset)
-                    if(!isset($_SESSION["postagem"])){
+                    if(!isset($_SESSION["postagens"])){
                         $_SESSION["postagens"] = array();
                     }
                     array_push($_SESSION["postagens"], $postagem);
@@ -48,7 +49,7 @@
 
         <div class="rodape"> 
             <a href="index.html" class="botao">Faça outro aqui!</a>
-            <a href="usuario.html" class="botao">Cadastrar Usuário</a>
+            <a href="cadastro.html" class="botao">Cadastrar Usuário</a>
             <a href="list.php" class="botao">Lista de Posts</a>     
         </div>
 
