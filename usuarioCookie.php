@@ -13,7 +13,7 @@
         <div class="cabecalho">
             <h1>Definição de Cookie</h1>
             <a href="index.html" class="botao">Faça um post aqui!</a>
-            <a href="busca.html" class="botao">Buscar</a> 
+            <a href="list.php" class="botao">Lista de Posts</a>
         </div>
     
         <div class="conteudo">

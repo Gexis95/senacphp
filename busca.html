@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postagens</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        function buscar(){
+            //pega o valor do input e armazena em uma var
+            var valor = $("#valor").val();
+
+            $.ajax({
+                url: "fazerBusca.php",              //arquivo php
+                method: "GET",                      //tipo de requisição
+                data: { busca: valor },             //atributo busca irá gardar o valor
+                success: function(data){            //caso de sucesso
+                    $("#resultado").html(data);     //escreve os dados na div resultado
+                }
+            });
+        }
+        $(document).ready(function(){
+            buscar();
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="painel">
+
+        <div class="cabecalho">
+            <h1> Lista de Posts</h1>
+            <a href="index.html" class="botao">Faça um post aqui!</a>
+        </div>
+    
+        <div class="conteudo">
+
+            <input type="text" id="valor" placeholder="Digite para Buscar">
+            <button onclick="buscar()">Buscar</button>
+
+            <div id="resultado">
+                
+            </div>
+
+        </div>
+
+        <div class="rodape">
+        </div>
+
+    </div>
+    
+</body>
+</html>

@@ -14,7 +14,6 @@
             <h1> Lista de Posts</h1>
             <a href="index.html" class="botao">Faça um post aqui!</a>
             <a href="busca.html" class="botao">Buscar</a>
-            <a href="cadastro.html" class="botao">Cadastrar Usuário</a>  
         </div>
     
         <div class="conteudo">
@@ -23,13 +22,22 @@
                 $usuario = $_COOKIE["nome"];
 
                 session_start();
-                
-                foreach($_SESSION["postagens"]as $postagem){
-                    echo '<div class="card">';
-                    echo "<strong> $usuario: </strong>";
-                    echo "$postagem";
-                    echo '</div>';
+
+                if(isset($_SESSION["postagens"])){ //se existe lista de postagens
+
+                    foreach($_SESSION["postagens"]as $postagem){
+                        echo '<div class="card">';
+                        echo "<strong> $usuario: </strong>";
+                        echo "$postagem";
+                        echo '</div>';
+                    }
+
                 }
+                else{
+                    echo "<h3>Nenhuma postagem foi feita ainda!</h3>";
+                }
+                
+                
             ?>
 
         </div>
