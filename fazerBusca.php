@@ -6,7 +6,7 @@
 
         if(isset($_SESSION["postagens"])){
             echo "<ul>";
-            foreach($_SESSION["postagens"] as $postagens){
+            foreach($_SESSION["postagens"] as $postagem){
                 if(stripos($postagem, $conteudo) !== false){
                     echo "<li> $postagem </li>";
                 }
