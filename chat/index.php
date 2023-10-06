@@ -8,7 +8,13 @@
 </head>
 <body>
     <?php 
-    
+        include "banco.php"; //importa o banco.php, similar ao link
+        session_start();
+
+        //mudar nome de usuário
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['usuario'])){
+            $_SESSION['usuario'] = $_POST['usuario'];
+        }
     ?>
 
     <div class="painel">
@@ -23,7 +29,7 @@
         </form>
 
         <form method="POST" action="">
-            <input type="text" name="usuario" placeholder="Escolha um nome de usuário">
+            <input type="text" name="usuario" placeholder="Insira seu nome de usuário">
             <button type="submit">Atualizar nome</button>
         </form>
     </div>
