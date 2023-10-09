@@ -22,7 +22,7 @@ body{
 }
 
 input{
-    height: 30px;
+    height: 35px;
     width: 250px;
     border-radius: 10px;
     border: 1px solid black;
@@ -31,8 +31,16 @@ input{
 }
 
 button{
-    height: 30px;
-    width: 123px;
+    height: 35px;
+    width: 130px;
     border: 1px solid black;
     border-radius: 5px;
+    background-color: rgb(52, 15, 127);
+    color: white;
+}
+
+button:hover{
+    background-color: rgb(82, 35, 176);
+    font-size: 14px;
+    transition: 1s;
 }

@@ -15,6 +15,25 @@
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['usuario'])){
             $_SESSION['usuario'] = $_POST['usuario'];
         }
+
+        //inserir dados
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['mensagem'])){
+            $mensagem = $_POST['mensagem'];
+
+            //forma mais compacta de um if
+            //$usuario = $_SESSION['usuario'] ? $_SESSION['usuario'] : 'Anônimo';
+
+            //forma convencional
+            if(isset($_SESSION['usuario'])){
+                $usuario = $_SESSION['usuario'];
+
+            } else{
+                $usuario = 'Anônimo';
+            }
+            $sql = "INSERT INTO tabela_mensagens(usuario, mensagem) VALUES ('$usuario', '$mensagem')";
+
+            $conexao -> query($sql);
+        }
     ?>
 
     <div class="painel">
