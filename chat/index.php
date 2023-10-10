@@ -40,8 +40,30 @@
         <h1> Senac Connect - Chat com PHP e MYSQL </h1>
 
         <div class="chat">
+            <?php
+                //script SQL de seleção
+                $sql = "SELECT usuario, mensagem, id FROM tabela_mensagens";
 
+                //armazena todos os resultados
+                $resultado = $conexao -> query($sql);
+
+                if($resultado -> num_rows > 0){
+                    while($linha = $resultado -> fetch_assoc()){
+
+                        echo '<div class="mensagens">';
+                        echo "<p> <b>{$linha['usuario']}</b> {$linha['mensagem']}</p>";
+
+                        echo '</div>';
+                    }
+                    
+                    
+                }
+                else{
+                    echo "<p> Nenhuma mensagem encontrada!</p>";
+                }
+            ?>
         </div>
+        <br>
         <form method="POST" action="">
             <input type="text" name="mensagem" placeholder="Digite sua mensagem">
             <button type="submit">Enviar Mensagem</button>
@@ -52,5 +74,6 @@
             <button type="submit">Atualizar nome</button>
         </form>
     </div>
+    
 </body>
 </html>
