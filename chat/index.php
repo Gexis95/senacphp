@@ -34,6 +34,12 @@
 
             $conexao -> query($sql);
         }
+
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])){
+            $id = $_POST['id'];
+            $sql = "DELETE FROM tabela_mensagens WHERE id = $id";
+            $conexao -> query($sql);
+        }
     ?>
 
     <div class="painel">
@@ -51,7 +57,12 @@
                     while($linha = $resultado -> fetch_assoc()){
 
                         echo '<div class="mensagens">';
-                        echo "<p> <b>{$linha['usuario']}</b> {$linha['mensagem']}</p>";
+                        echo "<p> <b>{$linha['usuario']}:</b> {$linha['mensagem']}</p>";
+
+                        echo '<form method="POST" action="">';
+                        echo "<input type='hidden' name='id' value='{$linha['id']}' >";
+                        echo "<button class='excluir' type='submit' name='excluir'> Excluir </button>";
+                        echo '</form>';
 
                         echo '</div>';
                     }
@@ -66,12 +77,12 @@
         <br>
         <form method="POST" action="">
             <input type="text" name="mensagem" placeholder="Digite sua mensagem">
-            <button type="submit">Enviar Mensagem</button>
+            <button class="butao" type="submit">Enviar Mensagem</button>
         </form>
 
         <form method="POST" action="">
             <input type="text" name="usuario" placeholder="Insira seu nome de usuário">
-            <button type="submit">Atualizar nome</button>
+            <button class="butao" type="submit">Atualizar nome</button>
         </form>
     </div>
     
