@@ -30,25 +30,25 @@
             } else{
                 $usuario = 'Anônimo';
             }
-            $sql = "INSERT INTO tabela_mensagens(usuario, mensagem) VALUES ('$usuario', '$mensagem')";
+            $sql = "INSERT INTO tabele_mensagens(usuario, mensagem) VALUES ('$usuario', '$mensagem')";
 
             $conexao -> query($sql);
         }
 
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])){
             $id = $_POST['id'];
-            $sql = "DELETE FROM tabela_mensagens WHERE id = $id";
+            $sql = "DELETE FROM tabele_mensagens WHERE id = $id";
             $conexao -> query($sql);
         }
     ?>
 
     <div class="painel">
-        <h1> Senac Connect - Chat com PHP e MYSQL </h1>
+        <h1> B) chat </h1>
 
         <div class="chat">
             <?php
                 //script SQL de seleção
-                $sql = "SELECT usuario, mensagem, id FROM tabela_mensagens";
+                $sql = "SELECT usuario, mensagem, id FROM tabele_mensagens";
 
                 //armazena todos os resultados
                 $resultado = $conexao -> query($sql);
