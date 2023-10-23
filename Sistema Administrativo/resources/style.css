@@ -1,4 +1,4 @@
-.fundo{
+body{
     background-color: rgba(14, 14, 15, 0) !important;
 }
 
@@ -16,15 +16,36 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    z-index: 100;
+    z-index: 5;
 }
 
 .user{
     font-size: 100px;
-    padding-left: 190px;
+    padding-left: 185px;
 }
 
 .login{
     text-align: center;
     
+}
+
+@media(max-width:540px){
+    .painel{
+        width: 300px;
+    }
+
+    .user{
+        padding-left: 85px;
+    }
+}
+
+@media(max-width:300px){
+    .painel{
+        width: 250px;
+        height: 650px;
+    }
+
+    .user{
+        padding-left: 60px;
+    }
 }
