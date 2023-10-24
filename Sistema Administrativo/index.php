@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body class="fundo">
+<body>
     
     <div class="painel animate__animated animate__fadeIn">
         <h1 class="login"> Faça o seu Login!</h1>
@@ -28,9 +28,12 @@
                 <input name="senha" type="password" class="form-control" placeholder="Senha" required>
             </div>
             <br>
+
+            <div class="botoes">
             <a href="principal.php">alo</a>
             <button type="submit" class="btn btn-primary">Enviar</button>
             <button type="submit" class="btn btn-primary">Limpar</button>
+            </div>
         </form>
 
     </div>

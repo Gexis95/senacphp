@@ -1,4 +1,4 @@
-body{
+.fundo{
     background-color: rgba(14, 14, 15, 0) !important;
 }
 
@@ -17,6 +17,10 @@ body{
     transform: translate(-50%, -50%);
     padding: 20px;
     z-index: 5;
+}
+
+.botoes{
+    text-align: center;
 }
 
 .user{
@@ -48,4 +52,15 @@ body{
     .user{
         padding-left: 60px;
     }
+}
+
+.navbar{
+    background-color: rgb(34, 34, 35) !important;
+}
+
+.menu{
+    min-width: 250px;
+    height: 100vh;
+    background-color: #222223;
+    color: white;
 }
