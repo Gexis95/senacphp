@@ -37,6 +37,9 @@
     .painel{
         width: 300px;
     }
+    .menu{
+        display: none;
+    }
 
     .user{
         padding-left: 85px;
@@ -47,6 +50,10 @@
     .painel{
         width: 250px;
         height: 650px;
+    }
+
+    .menu{
+        display: none;
     }
 
     .user{
@@ -63,4 +70,32 @@
     height: 100vh;
     background-color: #222223;
     color: white;
+    list-style: none;
+}
+
+.item{
+    display: block;
+    padding: 10px 20px;
+    /*margin-left: -50px;*/
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-left: -50px;
+    margin-top: 10px;
+}
+
+.item:hover{
+    background-color: white;
+    transition: 1s;
+    text-decoration: none;
+
+}
+
+ul{
+    list-style: none;
+}
+
+.ic{
+    font-size: 20px;
+    margin-right: 20px;
 }
