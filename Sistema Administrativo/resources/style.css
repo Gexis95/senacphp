@@ -33,6 +33,20 @@
     
 }
 
+.menu{
+    min-width: 250px;
+    height: 100vh;
+    background-color: #171718;
+    color: white;
+    list-style: none;
+}
+
+@media(max-width: 900){
+    .menu{
+        display: none;
+    }
+}
+
 @media(max-width:540px){
     .painel{
         width: 300px;
@@ -62,16 +76,9 @@
 }
 
 .navbar{
-    background-color: rgb(34, 34, 35) !important;
+    background-color: rgb(15, 15, 16) !important;
 }
 
-.menu{
-    min-width: 250px;
-    height: 100vh;
-    background-color: #222223;
-    color: white;
-    list-style: none;
-}
 
 .item{
     display: block;
@@ -98,4 +105,11 @@ ul{
 .ic{
     font-size: 20px;
     margin-right: 20px;
+}
+
+.cartao{
+    background-color: rgb(20, 24, 27);
+    color: #ffff;
+    margin: 10px;
+    border-radius: 10px;
 }
