@@ -55,3 +55,20 @@ CREATE TABLE agenda (
     obs TEXT,
     funcionario INT
 );
+
+
+INSERT INTO agenda (data, hora_inicio, hora_fim, horas, curso, codigo, obs, funcionario) VALUES
+('2023-11-07', '13:00:00','17:00:00','4:00:00', 'Informática', '01', 'obs', 1);
+
+
+/*criando um trigger*/
+DELIMITER //
+
+    CREATE TRIGGER calcular_horas
+    BEFORE INSERT ON agenda
+    FOR EACH ROW
+
+    BEGIN
+        SET new.horas = TIMEDIFF(NEW.hora_fim, NEW.hora_inicio);
+    END;
+// DELIMITER ;
