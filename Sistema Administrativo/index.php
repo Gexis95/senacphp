@@ -31,7 +31,6 @@
             <br>
 
             <div class="botoes">
-            <a href="principal.php">alo</a>
             <button type="submit" class="btn btn-primary">Enviar</button>
             <button type="submit" class="btn btn-primary">Limpar</button>
             </div>

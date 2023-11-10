@@ -1,5 +1,8 @@
 <?php
     include 'conexao.php';
+    include 'resources/valida.php';
+
+    $destino = "./usuario/inserir.php"
 ?>
 
 <!DOCTYPE html>
@@ -32,34 +35,35 @@
 
                 <div class="row">
                     <div class="col-md cartao">
+                        <h1>Bem Vindo 
+                            <?php echo $_SESSION['usuario']?>
+                        </h1>
                         <h1>Cadastro</h1>
-                        <form>
+                        <form action="<?=$destino; ?>" method="POST">
+
+                            <div class="form-group">
+                                <label>Id</label>
+                                <input name="id" disabled type="text" class="form-control" placeholder="Id">
+                            </div>
+
                             <div class="form-group">
                                 <label>Código do Usuário</label>
-                                <input type="text" class="form-control" placeholder="Seu Código">
+                                <input name="codigo" type="text" class="form-control" placeholder="Seu Código">
                             </div>
 
                             <div class="form-group">
                                 <label>Nome do Usuário</label>
-                                <input type="text" class="form-control" placeholder="Seu Nome">
+                                <input name="nome" type="text" class="form-control" placeholder="Seu Nome">
                             </div>
 
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input type="text" class="form-control" placeholder="Seu CPF">
+                                <input name="cpf" type="text" class="form-control" placeholder="Seu CPF">
                             </div>
 
                             <div class="form-group">
                                 <label> Senha </label>
-                                <div class="row">
-                                    <div class="col-11">
-                                        <input type="password" class="form-control" placeholder="Senha" id="campoSenha">
-                                    </div>
-                                    <div class="col-1">
-                                        <span style="margin: 10px -10px" toggle="#password-field"
-                                            class="fa fa-fw fa-eye field_icon botaoMostrar"></span>
-                                    </div>
-                                </div>
+                                <input name="senha" type="text" class="form-control" placeholder="Senha" id="campoSenha">
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
@@ -70,30 +74,29 @@
                         <table class="table table-striped table-dark" id="tabela">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Primeiro</th>
-                                    <th scope="col">Último</th>
-                                    <th scope="col">Nickname</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">CPF</th>
+                                    <th scope="col">Alterar</th>
+                                    <th scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
+                                
+
+                                    <?php
+                                        $sql = "SELECT * FROM usuario";
+                                        $resultado = mysqli_query($conexao, $sql);
+                                        while ($coluna = mysqli_fetch_array($resultado)){ 
+                                    ?>
+                                    <tr>
+                                    <th scope="row"><?php echo $coluna ['id']; ?></th>
+                                    <td><?php echo $coluna['nome']; ?></td>
+                                    <td><?php echo $coluna['cpf']; ?></td>
+                                    <td>Editar</td>
+                                    <td>Excluir</td>
+
+                                    <?php }?>
                                 </tr>
                             </tbody>
                         </table>
