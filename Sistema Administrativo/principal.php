@@ -50,7 +50,7 @@ if (!empty($_GET['alteracao'])) {
                         <h1>Bem Vindo
                             <?php echo $_SESSION['usuario'] ?>
                         </h1>
-                        <h1>Cadastro</h1>
+                        <h2>Cadastro/Alteração</h2>
                         <form action="<?= $destino; ?>" method="POST">
 
                             <div class="form-group">
