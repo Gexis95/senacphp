@@ -1,8 +1,20 @@
 <?php
-    include 'conexao.php';
-    include 'resources/valida.php';
+include 'conexao.php';
+include 'resources/valida.php';
 
-    $destino = "./usuario/inserir.php"
+$destino = "./usuario/inserir.php";
+
+//se for diferente de vazio, ao receber um código de alteração
+if (!empty($_GET['alteracao'])) {
+    $id = $_GET['alteracao'];
+
+    //selecionar o id escolhido para começar a alteração
+    $sql = "SELECT * FROM usuario WHERE id='$id'";
+    $dados = mysqli_query($conexao, $sql); //executa codigo sql
+    $usuarios = mysqli_fetch_assoc($dados); //variavel tem registros separados em colunas
+
+    $destino = "./usuario/alterar.php";
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,35 +47,40 @@
 
                 <div class="row">
                     <div class="col-md cartao">
-                        <h1>Bem Vindo 
-                            <?php echo $_SESSION['usuario']?>
+                        <h1>Bem Vindo
+                            <?php echo $_SESSION['usuario'] ?>
                         </h1>
                         <h1>Cadastro</h1>
-                        <form action="<?=$destino; ?>" method="POST">
+                        <form action="<?= $destino; ?>" method="POST">
 
                             <div class="form-group">
                                 <label>Id</label>
-                                <input name="id" disabled type="text" class="form-control" placeholder="Id">
+                                <input name="id" value="<?php echo isset($usuarios) ? $usuarios['id'] : '' ?>" type="text"
+                                    class="form-control" placeholder="Id">
                             </div>
 
                             <div class="form-group">
                                 <label>Código do Usuário</label>
-                                <input name="codigo" type="text" class="form-control" placeholder="Seu Código">
+                                <input name="codigo" value="<?php echo isset($usuarios) ? $usuarios['codigo'] : '' ?>"
+                                    type="text" class="form-control" placeholder="Seu Código">
                             </div>
 
                             <div class="form-group">
                                 <label>Nome do Usuário</label>
-                                <input name="nome" type="text" class="form-control" placeholder="Seu Nome">
+                                <input name="nome" value="<?php echo isset($usuarios) ? $usuarios['nome'] : '' ?>"
+                                    type="text" class="form-control" placeholder="Seu Nome">
                             </div>
 
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input name="cpf" type="text" class="form-control" placeholder="Seu CPF">
+                                <input id="cpf" value="<?php echo isset($usuarios) ? $usuarios['cpf'] : '' ?>" name="cpf"
+                                    type="text" class="form-control" placeholder="Seu CPF">
                             </div>
 
                             <div class="form-group">
                                 <label> Senha </label>
-                                <input name="senha" type="text" class="form-control" placeholder="Senha" id="campoSenha">
+                                <input name="senha" value="<?php echo isset($usuarios) ? $usuarios['senha'] : '' ?>"
+                                    type="text" class="form-control" placeholder="Senha" id="campoSenha">
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
@@ -82,21 +99,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
 
-                                    <?php
-                                        $sql = "SELECT * FROM usuario";
-                                        $resultado = mysqli_query($conexao, $sql);
-                                        while ($coluna = mysqli_fetch_array($resultado)){ 
+
+                                <?php
+                                $sql = "SELECT * FROM usuario";
+                                $resultado = mysqli_query($conexao, $sql);
+                                while ($coluna = mysqli_fetch_array($resultado)) {
                                     ?>
                                     <tr>
-                                    <th scope="row"><?php echo $coluna ['id']; ?></th>
-                                    <td><?php echo $coluna['nome']; ?></td>
-                                    <td><?php echo $coluna['cpf']; ?></td>
-                                    <td>Editar</td>
-                                    <td>Excluir</td>
+                                        <th scope="row">
+                                            <?php echo $coluna['id']; ?>
+                                        </th>
+                                        <td>
+                                            <?php echo $coluna['nome']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $coluna['cpf']; ?>
+                                        </td>
+                                        <td> <a href="principal.php?alteracao=<?= $coluna['id'] ?>"> Editar </a> </td>
+                                        <td><a href="<?php echo "./usuario/excluir.php?id=" . $coluna['id']; ?>">Excluir</a>
+                                        </td>
 
-                                    <?php }?>
+                                    <?php } ?>
                                 </tr>
                             </tbody>
                         </table>
@@ -110,7 +134,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
         integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -119,7 +143,9 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script src="resources\script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js" integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"
+        integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $("body").on('click', '.botaoMostrar', function () {
 
@@ -134,6 +160,12 @@
 
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            $('#cpf').mask('000.000.000-00');
+        });
+    </script>
+</body>
 </body>
 
 </html>
