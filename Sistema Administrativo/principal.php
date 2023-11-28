@@ -82,7 +82,7 @@ if (!empty($_GET['alteracao'])) {
                                 <input name="senha" value="<?php echo isset($usuarios) ? $usuarios['senha'] : '' ?>"
                                     type="text" class="form-control" placeholder="Senha" id="campoSenha">
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary">Enviar <i class="fa-solid fa-share-from-square"></i></button>
                         </form>
                     </div>
 
@@ -116,8 +116,8 @@ if (!empty($_GET['alteracao'])) {
                                         <td>
                                             <?php echo $coluna['cpf']; ?>
                                         </td>
-                                        <td> <a href="principal.php?alteracao=<?= $coluna['id'] ?>"> Editar </a> </td>
-                                        <td><a href="<?php echo "./usuario/excluir.php?id=" . $coluna['id']; ?>">Excluir</a>
+                                        <td> <a href="principal.php?alteracao=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pencil"></i> </a> </td>
+                                        <td><a href="<?php echo "./usuario/excluir.php?id=" . $coluna['id']; ?>"><i class="fa-solid fa-trash"></i></a>
                                         </td>
 
                                     <?php } ?>
