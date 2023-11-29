@@ -21,7 +21,7 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="principal.php">Principal</a>
-          <a class="dropdown-item" href="profissao.php">Profissão</a>
+          <a class="dropdown-item" href="funcao.php">Função</a>
           <a class="dropdown-item" href="funcionario.php">Funcionário</a>
           <a class="dropdown-item" href="curso.php">Curso</a>
           <a class="dropdown-item" href="agendamento.php">Agendamento</a>
