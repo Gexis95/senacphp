@@ -16,8 +16,8 @@
 
         $resultado = mysqli_query($conexao, $sql);
         // Mandar para página principal. 
-        header('Location: ../principal.php');
+        header('Location: ../funcionario.php');
     }else {
-        header('Location: ../principal.php');
+        header('Location: ../funcionario.php');
     }
 ?>

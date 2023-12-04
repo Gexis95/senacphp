@@ -2,18 +2,18 @@
 include 'conexao.php';
 include 'resources/valida.php';
 
-$destino = "./funcionario/inserir.php";
+$destino = "./agenda/inserir.php";
 
 //se for diferente de vazio, ao receber um código de alteração
 if (!empty($_GET['alteracao'])) {
     $id = $_GET['alteracao'];
 
     //selecionar o id escolhido para começar a alteração
-    $sql = "SELECT * FROM funcionario WHERE id='$id'";
+    $sql = "SELECT * FROM agenda WHERE id='$id'";
     $dados = mysqli_query($conexao, $sql); //executa codigo sql
-    $funcionarios = mysqli_fetch_assoc($dados); //variavel tem registros separados em colunas
+    $agendas = mysqli_fetch_assoc($dados); //variavel tem registros separados em colunas
 
-    $destino = "./funcionario/alterar.php";
+    $destino = "./agenda/alterar.php";
 }
 ?>
 
@@ -46,123 +46,108 @@ if (!empty($_GET['alteracao'])) {
             <div class="col-md-9">
 
                 <div class="row">
-                    <div class="col-md cartao">
+                    <div class="col-md-4 cartao">
                         <h2>Cadastro/Alteração</h2>
                         <form action="<?= $destino; ?>" method="POST">
 
                             <div class="form-group">
-                                <label> Id </label>
-                                <input name="id" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['id'] : "" ?>"
-                                    class="form-control" placeholder="ID">
+                                <label>Id</label>
+                                <input name="id" value="<?php echo isset($agendas) ? $agendas['id'] : '' ?>" type="text"
+                                    class="form-control" placeholder="Id">
                             </div>
 
                             <div class="form-group">
-                                <label> Codigo </label>
-                                <input name="codigo" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['codigo'] : "" ?>"
-                                    class="form-control" placeholder="Código">
+                                <label>Data</label>
+                                <input name="data" value="<?php echo isset($agendas) ? $agendas['data'] : '' ?>"
+                                    type="date" class="form-control">
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Hora de Início</label>
+                                        <input name="hora_inicio"
+                                            value="<?php echo isset($agendas) ? $agendas['hora_inicio'] : '' ?>"
+                                            type="time" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col>">
+                                    <div class="form-group">
+                                        <label>Hora de Término</label>
+                                        <input name="hora_fim"
+                                            value="<?php echo isset($agendas) ? $agendas['hora_fim'] : '' ?>"
+                                            type="time" class="form-control">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label> Nome </label>
-                                <input name="nome" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['nome'] : "" ?>"
-                                    class="form-control" placeholder="Nome">
+                                <label>Curso</label>
+                                <input name="curso" value="<?php echo isset($agendas) ? $agendas['curso'] : '' ?>"
+                                    type="text" class="form-control" placeholder="Observação">
                             </div>
 
                             <div class="form-group">
-                                <label> Salario </label>
-                                <input name="salario" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['salario'] : "" ?>"
-                                    class="form-control" placeholder="Salario">
+                                <label>Observação</label>
+                                <input name="obs" value="<?php echo isset($agendas) ? $agendas['obs'] : '' ?>"
+                                    type="text" class="form-control" placeholder="Observação">
                             </div>
-
-                            <div class="form-group">
-                                <label> Data de Nascimento </label>
-                                <input name="data_nascimento" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['data_nascimento'] : "" ?>"
-                                    class="form-control" placeholder="Data de Nascimento">
-                            </div>
-
-                            <div class="form-group">
-                                <label> CPF </label>
-                                <input name="cpf" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['cpf'] : "" ?>"
-                                    class="form-control" placeholder="CPF">
-                            </div>
-
-                            <div class="form-group">
-                                <label> Senha </label>
-                                <input name="senha" type="text"
-                                    value="<?php echo isset($funcionarios) ? $funcionarios['senha'] : "" ?>"
-                                    class="form-control" placeholder="Senha">
-                            </div>
-
-                            <div class="form-group">
-                                <label> Profissão </label>
-
-                                <select name="funcionario" class="form-control">
-                                    <option value=""> Selecione </option>
-  
-                                    <?php
-                                        $sql = "SELECT * FROM funcao";
-                                        $dados = mysqli_query($conexao, $sql);
-
-                                        while($linha = mysqli_fetch_assoc($dados)){
-                                         echo "<option value='".$linha['id']."' >".$linha['descricao']."</option>";
-                                        }
-                                    
-                                    ?>
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Enviar <i class="fa-solid fa-plus"></i>
-                            </button>
+                            <button type="submit" class="btn btn-primary">Enviar <i
+                                    class="fa-solid fa-share-from-square"></i></button>
                         </form>
-
                     </div>
 
                     <div class="col-md cartao">
                         <h1>Listagem</h1>
-
-                        <table class="table" id="tabela">
+                        <table class="table table-striped table-dark" id="tabela">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Nome </th>
-                                    <th scope="col">CPF </th>
-                                    <th scope="col">Alterar</th>
-                                    <th scope="col">Excluir</th>
+                                    <th scope="col">Curso</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Inicio</th>
+                                    <th scope="col">Duração</th>
+                                    <th scope="col">Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $sql = "SELECT * FROM funcionario";
-                                $resultado = mysqli_query($conexao, $sql);
-                                while ($coluna = mysqli_fetch_assoc($resultado)) {
 
+
+                                <?php
+                                $sql = "SELECT * FROM agenda";
+                                $resultado = mysqli_query($conexao, $sql);
+                                while ($coluna = mysqli_fetch_array($resultado)) {
                                     ?>
                                     <tr>
                                         <th scope="row">
                                             <?php echo $coluna['id']; ?>
                                         </th>
                                         <td>
-                                            <?php echo $coluna['nome']; ?>
+                                            <?php echo $coluna['curso']; ?>
                                         </td>
                                         <td>
-                                            <?php echo $coluna['cpf']; ?>
+                                            <?php echo $coluna['data']; ?>
                                         </td>
-                                        <td> <a href="funcionario.php?alteracao=<?= $coluna['id'] ?>"> <i
-                                                    class="fa-solid fa-pen-to-square"></i> </a> </td>
-                                        <td> <a href="<?php echo "./funcionario/excluir.php?id=" . $coluna['id']; ?>"> <i
-                                                    class="fa-solid fa-trash"></i> </a> </td>
-                                    </tr>
+                                        <td>
+                                            <?php echo $coluna['hora_inicio']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $coluna['hora_fim']; ?>
+                                        </td>
+                                        <?php echo $coluna['horas']; ?>
+                                        </td>
+                                        <td> <a href="agenda.php?alteracao=<?= $coluna['id'] ?>"> <i
+                                                    class="fa-solid fa-pencil"></i> </a>
+                                            <a href="<?php echo "./agenda/excluir.php?id=" . $coluna['id']; ?>"><i
+                                                    class="fa-solid fa-trash"></i></a>
+                                        </td>
 
-                                <?php } ?>
+                                    <?php } ?>
+                                </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
 
