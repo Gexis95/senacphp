@@ -1,13 +1,19 @@
 <?php
 include '../conexao.php';
 
-$descricao = $_REQUEST['descricao'];
+$data = $_REQUEST['data'];
+$hora_inicio = $_REQUEST['hora_inicio'];
+$hora_fim = $_REQUEST['hora_fim'];
+$curso = $_REQUEST['curso'];
+$codigo = $_REQUEST['codigo'];
 $obs = $_REQUEST['obs'];
+$funcionario = $_REQUEST['funcionario'];
 
-$sql = "INSERT INTO funcao (descricao, obs)
-    VALUES ('$descricao', '$obs')";
+$sql = "INSERT INTO agenda 
+    (data, hora_inicio, hora_fim, curso, codigo, obs, funcionario)
+    VALUES ('$data', '$hora_incio', '$hora_fim', '$curso', '$codigo', '$obs', '$funcionario')";
 
 $resultado = mysqli_query($conexao, $sql) or die("Erro ao inserir");
 
-header('Location: ../funcao.php');
+header('Location: ../agenda.php');
 ?>

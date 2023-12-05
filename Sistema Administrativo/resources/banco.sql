@@ -64,8 +64,8 @@ INSERT INTO agenda (data, hora_inicio, hora_fim, horas, curso, codigo, obs, func
 /*criando um trigger*/
 DELIMITER //
 
-    CREATE TRIGGER calcular_horas
-    BEFORE INSERT ON agenda
+    CREATE TRIGGER calcular_horas_atualizado_100crackeado
+    BEFORE UPDATE ON agenda
     FOR EACH ROW
 
     BEGIN

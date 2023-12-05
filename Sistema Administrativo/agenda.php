@@ -63,22 +63,17 @@ if (!empty($_GET['alteracao'])) {
                             </div>
 
                             <div class="row">
-
                                 <div class="col">
                                     <div class="form-group">
-                                        <label>Hora de Início</label>
-                                        <input name="hora_inicio"
-                                            value="<?php echo isset($agendas) ? $agendas['hora_inicio'] : '' ?>"
-                                            type="time" class="form-control">
+                                        <label> Hora de Inicio </label>
+                                        <input name="hora_inicio" type="time" value="<?php echo isset($agendas) ? $agendas['hora_inicio']: '' ?>" class="form-control" placeholder="Sua descrição">
                                     </div>
                                 </div>
 
-                                <div class="col>">
+                                <div class="col">
                                     <div class="form-group">
-                                        <label>Hora de Término</label>
-                                        <input name="hora_fim"
-                                            value="<?php echo isset($agendas) ? $agendas['hora_fim'] : '' ?>"
-                                            type="time" class="form-control">
+                                        <label> Hora de Término </label>
+                                        <input name="hora_fim" type="time" value="<?php echo isset($agendas) ? $agendas['hora_fim']: '' ?>" class="form-control" placeholder="Sua descrição">
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +81,13 @@ if (!empty($_GET['alteracao'])) {
                             <div class="form-group">
                                 <label>Curso</label>
                                 <input name="curso" value="<?php echo isset($agendas) ? $agendas['curso'] : '' ?>"
-                                    type="text" class="form-control" placeholder="Observação">
+                                    type="text" class="form-control" placeholder="Curso">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Código</label>
+                                <input name="codigo" value="<?php echo isset($agendas) ? $agendas['codigo'] : '' ?>"
+                                    type="text" class="form-control" placeholder="Código">
                             </div>
 
                             <div class="form-group">
@@ -94,8 +95,27 @@ if (!empty($_GET['alteracao'])) {
                                 <input name="obs" value="<?php echo isset($agendas) ? $agendas['obs'] : '' ?>"
                                     type="text" class="form-control" placeholder="Observação">
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar <i
-                                    class="fa-solid fa-share-from-square"></i></button>
+
+                            <div class="form-group">
+                                <label>Funcionario</label>
+                                <select class="form-control" name="funcionario"> 
+                                    <option value="">Selecione</option>
+                                    <?php
+                                        $slq = "SELECT * FROM funcionario";
+                                        $dados = mysqli_query($conexao, $slq);
+
+                                        while($linha = mysqli_fetch_assoc($dados)){
+                                            echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Enviar 
+                                <i class="fa-solid fa-share-from-square"></i>
+                            </button>
+                            
+                            
                         </form>
                     </div>
 
@@ -108,6 +128,7 @@ if (!empty($_GET['alteracao'])) {
                                     <th scope="col">Curso</th>
                                     <th scope="col">Data</th>
                                     <th scope="col">Inicio</th>
+                                    <th scope="col">Fim</th>
                                     <th scope="col">Duração</th>
                                     <th scope="col">Opções</th>
                                 </tr>
@@ -124,20 +145,27 @@ if (!empty($_GET['alteracao'])) {
                                         <th scope="row">
                                             <?php echo $coluna['id']; ?>
                                         </th>
+
                                         <td>
                                             <?php echo $coluna['curso']; ?>
                                         </td>
+
                                         <td>
                                             <?php echo $coluna['data']; ?>
                                         </td>
+
                                         <td>
                                             <?php echo $coluna['hora_inicio']; ?>
                                         </td>
+                                        
                                         <td>
                                             <?php echo $coluna['hora_fim']; ?>
                                         </td>
-                                        <?php echo $coluna['horas']; ?>
+
+                                        <td>
+                                            <?php echo $coluna['horas']; ?>
                                         </td>
+
                                         <td> <a href="agenda.php?alteracao=<?= $coluna['id'] ?>"> <i
                                                     class="fa-solid fa-pencil"></i> </a>
                                             <a href="<?php echo "./agenda/excluir.php?id=" . $coluna['id']; ?>"><i

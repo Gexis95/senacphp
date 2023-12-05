@@ -1,18 +1,23 @@
-<?php 
-    include '../acesso.php';
+<?php
+include '../acesso.php';
 
-    if(isset($_REQUEST['id'])){
+if (isset($_REQUEST['id'])) {
 
-        $id = $_REQUEST['id'];
-        $descricao = $_REQUEST['descricao'];
-        $obs = $_REQUEST['obs'];
+    $data = $_REQUEST['data'];
+    $hora_inicio = $_REQUEST['hora_inicio'];
+    $hora_fim = $_REQUEST['hora_fim'];
+    $curso = $_REQUEST['curso'];
+    $codigo = $_REQUEST['codigo'];
+    $obs = $_REQUEST['obs'];
+    $funcionario = $_REQUEST['funcionario'];
 
-        $sql = "UPDATE funcao SET descricao='$descricao', obs='$obs' WHERE id='$id'";
+    $sql = "UPDATE agenda SET data='$data', hora_inicio='$hora_inicio', hora_fim='$hora_fim', curso='$curso',
+    codigo='$codigo', obs='$obs', funcionario='$funcionario' WHERE id='$id'";
 
-        $resultado = mysqli_query($conexao, $sql);
-        // Mandar para página principal. 
-        header('Location: ../funcao.php');
-    }else {
-        header('Location: ../funcao.php');
-    }
+    $resultado = mysqli_query($conexao, $sql);
+    // Mandar para página principal. 
+    header('Location: ../agenda.php');
+} else {
+    header('Location: ../agenda.php');
+}
 ?>
