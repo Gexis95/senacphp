@@ -3,6 +3,7 @@ include '../acesso.php';
 
 if (isset($_REQUEST['id'])) {
 
+    $id = $_REQUEST['id'];
     $data = $_REQUEST['data'];
     $hora_inicio = $_REQUEST['hora_inicio'];
     $hora_fim = $_REQUEST['hora_fim'];

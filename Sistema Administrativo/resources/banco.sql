@@ -41,7 +41,7 @@ CREATE TABLE usuario(
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2;
 
 
-INSERT INTO usuario (id, codigo, nome, cpf, senha) VALUES (1, '123', 'adm', '123.123.123.12', '123');
+INSERT INTO usuario (id, codigo, nome, cpf, senha) VALUES (1, '123', 'adm', '123.123.123-12', '123');
 
 
 CREATE TABLE agenda (
