@@ -19,7 +19,7 @@ if($resultado->num_rows > 0){
             'id' => $linha['id'],
             'title' => $linha['curso'],
             'start' => $linha['data'].'T'.$linha['hora_inicio'],
-            'end' => $linha['id'].'T'.$linha['hora_fim'],
+            'end' => $linha['data'].'T'.$linha['hora_fim'],
         );
     }
 }
@@ -106,10 +106,13 @@ if($resultado->num_rows > 0){
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+          initialView: 'dayGridMonth',
           events: <?php echo json_encode($eventos); ?>
         });
         calendar.render();
+
+        var visualizacao =document.getElementById('visualizacao');
+        visualizacao.addEventListener("change", function(){ calendar.changeView(visualizacao.value);})
       });
 
     </script>
