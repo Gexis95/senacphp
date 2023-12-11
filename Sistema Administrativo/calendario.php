@@ -112,7 +112,7 @@ if($resultado->num_rows > 0){
         calendar.render();
 
         var visualizacao =document.getElementById('visualizacao');
-        visualizacao.addEventListener("change", function(){ calendar.changeView(visualizacao.value);})
+        visualizacao.addEventListener("change", function(){ calendar.changeView(visualizacao.value); })
       });
 
     </script>
