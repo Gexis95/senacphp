@@ -10,7 +10,7 @@ $slq = "SELECT agenda.id AS id,
 funcionario.nome AS funcionario,
 curso, data, hora_inicio, hora_fim
 FROM agenda INNER JOIN funcionario 
-ON funcionario.id = agenda.funcionario WHERE  cpf=.$_SESSION[$cpfFuncionario]";
+ON funcionario.id = agenda.funcionario WHERE funcionario.cpf='$cpf';
 
 $resultado = $conexao->query($slq);
 
