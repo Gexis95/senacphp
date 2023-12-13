@@ -23,7 +23,7 @@ while ($data_atual <= $data_fim) {
     $dia_semana = strtolower(date('l', strtotime($data)));
 
     //se o dia da semana de acordo com o periodo está nas marcações do checbox da tela
-    if (in_array($dia_semana, $dias_semana)) {
+      if (in_array($dia_semana, $dias_semana)) {
 
         $sql = "INSERT INTO agenda 
         (data, hora_inicio, hora_fim, curso, codigo, obs, funcionario)
@@ -31,10 +31,10 @@ while ($data_atual <= $data_fim) {
 
         $resultado = mysqli_query($conexao, $sql) or die("Erro ao inserir");
     }
-    
+
     //avança um dia na frente
     $data_atual->add(new DateInterval('P1D'));
 }
 
-header('Location: ../agenda.php');
+header('Location: ../agendaMultipla.php');
 ?>

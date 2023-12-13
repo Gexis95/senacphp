@@ -12,12 +12,12 @@
 </head>
 <body>
     
-    <div class="painel animate__animated animate__fadeIn">
+    <div class="painel animate__animated animate__fadeIn" style="background-color: aliceblue; color: black;">
         <h1 class="login"> Faça o seu Login!</h1>
-        <i class="fa-solid fa-user user" style="color: #ffffff;"></i>
+        <i class="fa-solid fa-user user" style="color: black;"></i>
         <br>
         <br>
-        <form action="acesso.php" method="POST">
+        <form action="acessoInstrutor.php" method="POST">
             <div class="form-group">
                 <label >CPF</label>
                 <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Seu CPF" required>
@@ -32,7 +32,7 @@
 
             <div class="botoes">
             <button type="submit" class="btn btn-primary">Enviar</button>
-            <a type="submit" class="btn btn-primary" href="instrutor.php">Instrutores</a>
+            <a type="submit" class="btn btn-primary" href="index.php">Administrativo</a>
             </div>
         </form>
 

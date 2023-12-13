@@ -60,7 +60,7 @@ if (!empty($_GET['alteracao'])) {
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Data de Início</label>
-                                        <input name="data_incio" value="<?php echo isset($agendas) ? $agendas['data_inicio'] : '' ?>"
+                                        <input name="data_inicio" value="<?php echo isset($agendas) ? $agendas['data_inicio'] : '' ?>"
                                             type="date" class="form-control">
                                     </div>
                                 </div>
